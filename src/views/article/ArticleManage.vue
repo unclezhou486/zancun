@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Delete, Edit } from '@element-plus/icons-vue'
+import { Delete, Edit ,Search ,Refresh } from '@element-plus/icons-vue'
 import ChannelSelect from './components/ChannelSelect.vue'
 import ArticleEdit from './components/ArticleEdit.vue'
 import { artGetListService, artDelService,} from '@/api/article.js'
@@ -8,7 +8,6 @@ import { formatTime } from '@/utils/format.js'
 const articleList = ref([]) // 文章列表
 const total = ref(0) // 总条数
 const loading = ref(false) // loading状态
-
 // 定义请求参数对象
 const params = ref({
   pagenum: 1, // 当前页
@@ -120,8 +119,9 @@ const onSuccess = (type) => {
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button @click="onSearch" type="primary">搜索</el-button>
-        <el-button @click="onReset">重置</el-button>
+
+        <el-button @click="onSearch" type="primary" :icon="Search">搜索</el-button>
+        <el-button @click="onReset" :icon="Refresh">重置</el-button>
       </el-form-item>
     </el-form>
 
